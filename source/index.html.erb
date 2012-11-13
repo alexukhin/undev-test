@@ -1,3 +1,24 @@
 ---
 title: My Test Application
 ---
+
+<div id='application'></div>
+
+<script type="text/x-handlebars" data-template-name="application">
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="albums">
+  {{#if App.albumsController.total}}
+    <div><h1>Количество альбомов: {{App.albumsController.total}}</h1></div>
+    {{#each App.albumsController.content}}
+      <div class='album'>
+        <div class='image'>{{image this.avatarUrl}}</div>
+        <div class='info'>info</div>
+        <div class='clear'></div>
+      </div>
+    {{/each}}
+  {{else}}
+    <div><h1>Загрузка</h1></div>
+  {{/if}}  
+</script>

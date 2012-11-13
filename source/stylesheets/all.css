@@ -1,8 +1,8 @@
-body,div {
+body,div,img {
   margin: 0px;
   padding: 0px;
 }
-#content {
+#application {
   width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -10,9 +10,19 @@ body,div {
 /*Albums*/
 .album {
   width: 100%;
-  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
   padding: 5px;
 }
-.album:last-child {
-  border-bottom: none;
-};
+.album .image {
+  width: 200px;
+  height: 150px;
+  float: left;
+}
+.album .info {
+  float: left;
+  padding: 5px;
+  width: 590px;
+}
+.album .clear {
+  clear: both;
+}
