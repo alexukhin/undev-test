@@ -1,0 +1,18 @@
+body,div {
+  margin: 0px;
+  padding: 0px;
+}
+#content {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*Albums*/
+.album {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  padding: 5px;
+}
+.album:last-child {
+  border-bottom: none;
+};
