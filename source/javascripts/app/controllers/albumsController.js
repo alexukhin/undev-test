@@ -110,17 +110,20 @@ App.albumsController = Em.ArrayController.create({
                   avatarUrl: avatarUrl                   
                 }));
                 self.clearNewAlbumInfo();
-                self.set('total', self.total + 1);
+                var total = parseInt(self.total) + 1;
+                self.set('total', total.toString() );
               }
               if(response.stat == 'fail'){
                 self.clearNewAlbumInfo();
-                self.set('total', self.total + 1);
+                var total = parseInt(self.total) + 1;
+                self.set('total', total.toString() );
                 alert('Альбом был добавлен, но не удалось получить информацию о нем!');
               }
             },
             error: function(){
               self.clearNewAlbumInfo();
-              self.set('total', self.total + 1);        
+              var total = parseInt(self.total) + 1;
+              self.set('total', total.toString() );        
               alert('Альбом был добавлен, но не удалось получить информацию о нем!');
             }       
           });

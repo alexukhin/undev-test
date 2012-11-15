@@ -35,7 +35,8 @@ title: My Test Application
         </div>
         <div class='actions'>
           <div>
-            <button {{action removeAlbum content target="App.albumsController"}}>Удалить</button>
+            <a {{action editAlbum content href=true}}>Редактировать</a>
+            <a class='act' {{action removeAlbum content target="App.albumsController"}}>Удалить</a>
           </div>
         </div>
         <div class='clear'></div>
@@ -84,4 +85,8 @@ title: My Test Application
   {{else}}
     <div><h1>Загрузка</h1></div>
   {{/if}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="edit_album">
+  редактируем альбом
 </script>
