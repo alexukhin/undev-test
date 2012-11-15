@@ -11,6 +11,13 @@ title: My Test Application
 <script type="text/x-handlebars" data-template-name="albums">
   {{#if App.albumsController.total}}
     <div><h1>Количество альбомов: {{App.albumsController.total}}</h1></div>
+    <div>
+      Создать альбом:
+      <div>Название: {{view Ember.TextField valueBinding="App.albumsController.newAlbumName"}}</div>
+      <div>ID видео: {{view Ember.TextField valueBinding="App.albumsController.newAlbumVideo"}}</div>
+      <div>Описание альбома: {{view Ember.TextField valueBinding="App.albumsController.newAlbumDescription"}}</div>
+      <button {{action addAlbum target="App.albumsController"}}>Создать</button>
+    </div>
     {{#each content in App.albumsController}}
       <div class='album'>
         <div class='image'>
@@ -27,7 +34,9 @@ title: My Test Application
           <div>{{content.description}}</div>
         </div>
         <div class='actions'>
-          <div class='act'>Удалить</div>
+          <div>
+            <button {{action removeAlbum content target="App.albumsController"}}>Удалить</button>
+          </div>
         </div>
         <div class='clear'></div>
       </div>
@@ -39,7 +48,7 @@ title: My Test Application
 
 <script type="text/x-handlebars" data-template-name="videos">
   {{#if App.videosController.total}}
-    <div><h1>Количество видео в альбоие: {{App.videosController.total}}</h1></div>
+    <div><h1>Количество видео в альбоме: {{App.videosController.total}}</h1></div>    
     {{#each content in App.videosController}}
       <div class='album'>
         <a {{action showVideo content href=true}}>

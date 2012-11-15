@@ -1,6 +1,6 @@
-window.App = Em.Application.create({
+App = Em.Application.create({
   rootElement: "#application",
-  init: function(){
+  ready: function(){
     console.log("Created App Namespace");
   }
 });
