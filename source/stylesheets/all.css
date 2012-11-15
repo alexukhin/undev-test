@@ -7,6 +7,16 @@ body,div,img {
   margin-left: auto;
   margin-right: auto;
 }
+h2 {
+  margin: 0px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: underline;
+}
 /*Albums*/
 .album {
   width: 100%;
@@ -21,7 +31,15 @@ body,div,img {
 .album .info {
   float: left;
   padding: 5px;
-  width: 590px;
+  width: 490px;
+}
+.album .actions {
+  float: left;
+  width: 100px;
+}
+.album .act:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .album .clear {
   clear: both;

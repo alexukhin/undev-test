@@ -11,14 +11,68 @@ title: My Test Application
 <script type="text/x-handlebars" data-template-name="albums">
   {{#if App.albumsController.total}}
     <div><h1>Количество альбомов: {{App.albumsController.total}}</h1></div>
-    {{#each App.albumsController.content}}
+    {{#each content in App.albumsController}}
       <div class='album'>
-        <div class='image'>{{image this.avatarUrl}}</div>
-        <div class='info'>info</div>
+        <div class='image'>
+          <a {{action showAlbum content href=true}}>
+            <img {{bindAttr src="content.avatarUrl"}}>
+          </a>
+        </div>
+        <div class='info'>
+          <h2>
+            <a {{action showAlbum content href=true}}>
+              {{content.title}}
+            </a>
+          </h2>
+          <div>{{content.description}}</div>
+        </div>
+        <div class='actions'>
+          <div class='act'>Удалить</div>
+        </div>
         <div class='clear'></div>
       </div>
     {{/each}}
   {{else}}
     <div><h1>Загрузка</h1></div>
   {{/if}}  
+</script>
+
+<script type="text/x-handlebars" data-template-name="videos">
+  {{#if App.videosController.total}}
+    <div><h1>Количество видео в альбоие: {{App.videosController.total}}</h1></div>
+    {{#each content in App.videosController}}
+      <div class='album'>
+        <a {{action showVideo content href=true}}>
+          <div class='image'>
+            <img {{bindAttr src="content.avatarUrl"}}>
+          </div>
+        </a>
+        <div class='info'>
+          <a {{action showVideo content href=true}}>
+            <h2>{{content.title}}</h2>
+          </a>
+          <div>{{content.description}}</div>
+        </div>
+        <div class='clear'></div>
+      </div>      
+    {{/each}}
+  {{else}}
+    <div><h1>Загрузка</h1></div>
+  {{/if}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="video">
+  {{#if App.videoController.stat}}
+    <div>
+      <h2>{{App.videoController.content.title}}</h2>
+    </div>
+    <div>
+      <iframe {{bindAttr src="App.videoController.content.url"}} width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    </div>
+    <div>
+      {{App.videoController.content.description}}
+    </div>
+  {{else}}
+    <div><h1>Загрузка</h1></div>
+  {{/if}}
 </script>
