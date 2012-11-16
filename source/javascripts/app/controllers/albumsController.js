@@ -1,3 +1,4 @@
+App.AlbumsController = Em.ArrayController.extend({});
 App.albumsController = Em.ArrayController.create({
   content: [],
   total: null,
@@ -46,7 +47,7 @@ App.albumsController = Em.ArrayController.create({
   },
   removeAlbum: function(x){
     var self = this;
-    var videoId = x.context.id;
+    var albumId = x.context.id;
     $.ajax({
       type: 'post',
       url: App.connection.url,
@@ -54,7 +55,7 @@ App.albumsController = Em.ArrayController.create({
       data: {
         method: 'albums.delete',
         params: {
-          album_id: videoId
+          album_id: albumId
         }
       },
       success: function(response){

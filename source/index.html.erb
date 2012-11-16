@@ -48,8 +48,12 @@ title: My Test Application
 </script>
 
 <script type="text/x-handlebars" data-template-name="videos">
-  {{#if App.videosController.total}}
+  {{#if App.videosController.total}} 
     <div><h1>Количество видео в альбоме: {{App.videosController.total}}</h1></div>    
+    <div>
+      ID Видео: {{view Ember.TextField valueBinding="App.videosController.newVideoId"}}
+      <button {{action addVideo target="App.videosController"}}>Добавить</button>
+    </div>   
     {{#each content in App.videosController}}
       <div class='album'>
         <a {{action showVideo content href=true}}>
@@ -62,6 +66,11 @@ title: My Test Application
             <h2>{{content.title}}</h2>
           </a>
           <div>{{content.description}}</div>
+        </div>
+        <div class='actions'>
+          <div>
+            <a class='act' {{action removeVideo content target="App.videosController"}}>Удалить</a>
+          </div>
         </div>
         <div class='clear'></div>
       </div>      
@@ -80,6 +89,11 @@ title: My Test Application
       <iframe {{bindAttr src="App.videoController.content.url"}} width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
     <div>
+      <div class='like'>
+        <a {{action likeOrNot target="App.videoController"}}>{{App.videoController.content.likeOrNot}}</a>
+      </div>
+    </div>
+    <div>
       {{App.videoController.content.description}}
     </div>
   {{else}}
@@ -88,5 +102,10 @@ title: My Test Application
 </script>
 
 <script type="text/x-handlebars" data-template-name="edit_album">
-  редактируем альбом
+  <h1>Редактирование альбома &quot {{App.edit_albumController.content.title}} &quot</h1>
+  <div>Название: {{view Ember.TextField valueBinding="App.edit_albumController.content.title"}}</div>
+  <div>Описание: {{view Ember.TextArea valueBinding="App.edit_albumController.content.description"}}</div>
+  <div>
+    <button {{action editInfo target="App.edit_albumController"}}>Сохранить</button>
+  </div>
 </script>

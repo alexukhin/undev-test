@@ -16,6 +16,7 @@ a {
 }
 a:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 /*Albums*/
 .album {
@@ -43,4 +44,8 @@ a:hover {
 }
 .album .clear {
   clear: both;
+}
+.like {
+  width: 800px;
+  text-align: right;
 }

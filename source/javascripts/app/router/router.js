@@ -6,32 +6,33 @@ App.Router = Em.Router.extend({
     }),
     albums: Em.Route.extend({
       route: '/albums',
-      showAlbum: Em.Route.transitionTo('videos.index'),
-      editAlbum: Em.Route.transitionTo('videos.edit'),
-      connectOutlets: function(router){
-        App.albumsController.loadAlbums();
-        router.get('applicationController').connectOutlet('albums');
-      }
+
+        showAlbum: Em.Route.transitionTo('videos.index'),
+        editAlbum: Em.Route.transitionTo('videos.edit'),
+        connectOutlets: function(router){
+          App.albumsController.loadAlbums();
+          router.get('applicationController').connectOutlet('albums');
+        }        
     }),
     videos: Em.Route.extend({
-      route: '/album/:id',
-      connectOutlets: function(router, context){
-        App.videosController.loadVideos(context.id);
-      },
+      route: '/album',
       index: Em.Route.extend({
-        route: '/',
+        route: '/:id',
         showVideo: Em.Route.transitionTo('video'),
-        connectOutlets: function(router){
-          router.get('applicationController').connectOutlet('videos');
-        }        
+        connectOutlets: function(router, context){
+          App.videosController.loadVideos(context.id);
+          router.get('applicationController').connectOutlet('videos'); 
+        } 
       }),
       edit: Em.Route.extend({
-        route: '/edit',
-        connectOutlets: function(router){
+        route: '/:id/edit',
+        connectOutlets: function(router, context){
+          App.edit_albumController.set('content', context);
+          App.edit_albumController.title = context.title;
+          App.edit_albumController.description = context.description;
           router.get('applicationController').connectOutlet('edit_album');
         }
       })
-
     }),
     video: Em.Route.extend({
       route: '/video/:id',
