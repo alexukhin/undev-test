@@ -4,3 +4,13 @@ This is my test single page application
     jquery
     ember
     handlebars
+
+  How to:
+    At first we need installed ruby 1.9.2p320
+    Actions in Linux console
+    - "apt-get install git"
+    - clone this project on your pc: "git clone https://github.com/ushlepok/undev-test"
+    - gem install bundler
+    - bundle install
+    - bundle exec middleman server
+    - and then open localhost:4567 in your browser
